@@ -1,0 +1,69 @@
+import csv
+
+myList = []
+
+with open(r'c:\Users\budau\Downloads\iris.data') as csvfile:#ii da open la fisier si il delimiteaza frumos cu ,
+    readCSV = csv.reader(csvfile, delimiter=',')
+    for row in readCSV:
+        if len(row) == 5:
+            myList.append([float(row[0]), float(row[1]), float(row[2]), float(row[3])])
+
+import numpy as np
+npArray = np.array(myList)
+col0_min = np.min(npArray[:,0]) # [:,0] notatie in numpy/panda ce inseamna [ first_row:last_row , column_0 ]
+                                # toate numerele din coloana 0
+col0_norm = (npArray[:,0]-min(npArray[:,0])) / (max(npArray[:,0])-min(npArray[:,0]))
+col0_max = np.max(npArray[:,0])
+col0_med = np.median(npArray[:,0])
+col0_avg = np.average(npArray[:,0])
+print('Pentru coloana 1:\n min=',col0_min,'\n'' max=',col0_max,'\n'' avg=',col0_avg,'\n'' '
+'med=',col0_med,'\n''Norma coloanei 1:\n',col0_norm)
+
+print("------------------------------------------------------------------\n")
+
+col1_min = np.min(npArray[:,1])
+col1_norm = (npArray[:,1]-min(npArray[:,1])) / (max(npArray[:,1])-min(npArray[:,1]))
+col1_max = np.max(npArray[:,1])
+col1_med = np.median(npArray[:,1])
+col1_avg = np.average(npArray[:,1])
+print('Pentru coloana 2:\n min=',col1_min,'\n'' max=',col1_max,'\n'' avg=',col1_avg,'\n'
+' med=',col1_med,'\n''Norma coloanei 2:\n',col1_norm)
+
+print("------------------------------------------------------------------\n")
+
+col2_min = np.min(npArray[:,2])
+col2_norm = (npArray[:,2]-min(npArray[:,2])) / (max(npArray[:,2])-min(npArray[:,2]))
+col2_max = np.max(npArray[:,2])
+col2_med = np.median(npArray[:,2])
+col2_avg = np.average(npArray[:,2])
+print('Pentru coloana 3:\n min=',col2_min,'\n'' max=',col2_max,'\n'' avg=',col2_avg,'\n'
+' med=',col2_med,'\n''Norma coloanei 3:\n',col2_norm)
+
+print("------------------------------------------------------------------\n")
+
+col3_min = np.min(npArray[:,3])
+col3_norm = (npArray[:,3]-min(npArray[:,3])) / (max(npArray[:,3])-min(npArray[:,3]))
+col3_max = np.max(npArray[:,3])
+col3_med = np.median(npArray[:,3])
+col3_avg = np.average(npArray[:,3])
+print('Pentru coloana 4:\n min=',col3_min,'\n'' max=',col3_max,'\n'' avg=',col3_avg,'\n'
+' med=',col3_med,'\n''Norma coloanei 4:\n',col3_norm)
+
+print("------------------------------------------------------------------\n")
+
+
+
+
+pond=[0.2,1.1,-0.9,1]
+col_noua=[]
+for rows in range(npArray.shape[0]):#iteram prin linii
+    pond_arr=(np.multiply(npArray[rows,:],pond))#inmulteste fiecare numar din linie cu ponderea
+    col_noua.append([np.sum(pond_arr)])
+npArray = np.append(npArray, col_noua, axis=1)
+print("Suma ponderata este:\n" , npArray)
+
+
+
+
+
+
